@@ -1,63 +1,61 @@
-// const mongoose = require('mongoose')
-// const id = mongoose.Schema.Types.ObjectId
-// const bookSchema = new mongoose.Schema({
+const mongoose = require('mongoose')
+const id = mongoose.Schema.Types.ObjectId
+const bookSchema = new mongoose.Schema({
 
-// title:{
-//     type:String,
-//     unique:true,
-//     required :true
-// },
-// excerpt:{
-//     type:String,
-//     required:true
-// },
+title:{
+    type:String,
+    unique:true,
+    required :true
+},
+excerpt:{
+    type:String,
+    required:true
+},
 
-// userId:{
-//     type:id,
-//     ref:'user',
-//     required:true
-// },
+userId:{
+    type:id,
+    ref:'user',
+    required:true
+},
 
-// ISBN:{
-//     type:String,
-//     required:true,
-//     unique:true
-// },
+ISBN:{
+    type:String,
+    required:true,
+    unique:true
+},
 
-// category:{
-//     type:String,
-//     required:true
-// },
+category:{
+    type:String,
+    required:true
+},
 
-// subcategory:{
-//     type:String,
-//     required:true
-// },
+subcategory:{
+    type:String,
+    required:true
+},
 
-// reviews:{
-//     type:Number,
-//     default:0,
-//     comment:[String]
-// },
+reviews:{
+    type:Number,
+    default:0,
+    comment:[String]
+},
 
-// deletedAt:{
-//     type:String
-// },
+deletedAt:{
+    type:String
+},
 
-// isDeleted:{
-//     type:Boolean,
-//     default:false
-// },
+isDeleted:{
+    type:Boolean,
+    default:false
+},
 
-// releasedAt:{
-//     type:Date()
+releasedAt:{
+    type:Date()
 
-// }},
+}},
 
-// {timestamps:true})
-
-
+{timestamps:true})
 
 
 
-// module.exports=mongoose.model('User',userSchema)
+ module.exports=mongoose.model('Book',bookSchema)

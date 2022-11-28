@@ -34,18 +34,28 @@ const createUser = async function (req, res) {
         let enums = req.body.title
         if(!enums){return res.status(400).send({status:false, msg :"Please enter a valid title"})}
         
+        if(!(/^\d{10}$/.test(phone))){
+            return res.status(400).send({status:false,msg:"Enter valid mobile number"})
+        }
+
+        let phone1 = await userModel.findOne({phone:phone})
+        if(phone1) 
+        {
+            return res.status(400).send({status:false,msg:"Number already taken"})
+        }
+     
         let checkEmail = validateEmail(email)          
         if (!checkEmail) { return res.status(400).send({ status: false, msg: "Please enter a valid Email"}) }
         
         let userData = await userModel.find({email:email})
-        if(userData.length != 0){return res.send({status:false, msg:"Account already created, Please login"})}
+        if(userData.length != 0){return res.send({status:false, msg:"email is already taken"})}
         
         let checkPass = checkPassword(password)
         if (!checkPass) { return res.status(400).send({ status: false, msg: "Please enter a valid Password"})}
         
-        // if(password.length>=8 || password.length <=16 ){
-        //     return  res.status(400).send({ status: false, msg: "Please enter a valid Password length "})
-        // }
+        if(!(password.length>7 && password.length <17 )){
+            return  res.status(400).send({ status: false, msg: "Please enter a valid Password length "})
+        }
 
         let street = await req.body.address.street;
         if(!street){return res.status(400).send({status:false,msg:"please enter street"})}
