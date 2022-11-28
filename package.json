@@ -1,0 +1,27 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "project3/BookManagement",
+  "main": "index.js",
+  "scripts": {
+    "test": "error/server error"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Raj-Gupta-au46/bookmanagement.git"
+  },
+  "author": "Sunanda Sharma,Sourabh Patil,Shivam Shukla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raj-Gupta-au46/bookmanagement/issues"
+  },
+  "homepage": "https://github.com/Raj-Gupta-au46/bookmanagement#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "module": "^1.2.5",
+    "moment": "^2.29.4",
+    "mongoose": "^6.7.3",
+    "nodemon": "^2.0.20"
+  }
+}
