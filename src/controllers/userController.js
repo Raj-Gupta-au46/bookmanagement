@@ -78,4 +78,57 @@ const createUser = async function (req, res) {
     }
 }
 
+
+
+
+const userLogin = async function (req, res) {
+    
+    
+        try {
+            let data = req.body
+            const { email, password } = data
+            //================================= if data is not entered in body ==================================
+            if (Object.keys(data).length == 0) {
+                return res.status(400).send({ status: false, message: "Body can't be empty! Please Provide Data" })
+            }
+            //=================================== email not entered ==========================================
+            if (!email) {
+                return res.status(400).send({ status: false, message: "Please provide Email to login" })
+            }
+            if (!validateEmail(email)) {
+                return res.status(400).send({ status: false, msg: "invalid email format" });
+            }
+            //================================= password not entered =======================================
+            if (!password) {
+                return res.status(400).send({ status: false, message: "Please provide Password to login" })
+            }
+            if (!checkPassword(password)) {
+                return res.status(400).send({ status: false, msg: "invalid password format" });
+            }
+            //============================= invalid email or password ======================================
+            const findUser = await userModel.findOne({ email: email, password: password })
+            if (!findUser)
+                return res.status(401).send({ status: false, message: "Invalid email or Password" })
+    
+            // ========================= token creation ===============================================
+            let token = jwt.sign({ userId: findUser._id }, "Lithium", { expiresIn: '24h' })
+            let decode = jwt.decode(token, "Lithium")
+    
+            const tokeniat = new Date(decode.iat * 1000).toLocaleString()
+            const tokenexp = new Date(decode.exp * 1000).toLocaleString()
+       
+    
+            res.status(201).send({ status: true, message: "User logged in Successfully", data: { token: token,userId:decode.userId, iat: tokeniat, exp: tokenexp } })
+        }
+    
+        catch (err) {
+            res.status(500).send({ status: false, message: err.message })
+        }
+    }
+    
+    
+
+
+
 module.exports.createUser = createUser
+module.exports.userLogin = userLogin
