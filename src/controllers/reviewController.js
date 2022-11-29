@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const reviewModel = require("../models/reviewmodel")
 const bookModel = require("../models/bookModel")
 
@@ -197,3 +198,8 @@ const deleteReview = async function (req, res) {
 module.exports.createReview = createReview
 module.exports.updatedReview = updatedReview
 module.exports.deleteReview = deleteReview
+=======
+
+
+
+>>>>>>> 2b59250b03826f8dcbb26244dd5e541c207dda63

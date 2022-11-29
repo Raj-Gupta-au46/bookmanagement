@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
@@ -25,3 +26,19 @@ router.delete("/books/:bookId/review/:reviewId",reviewController.deleteReview)
 
 
 module.exports = router;
+=======
+const express=require("express");
+const router=express.Router();
+const userController=require("../controllers/userController");
+const bookController=require("../controllers/bookController");
+
+router.post("/registeruser",userController.createUser);
+router.post("/books",bookController.createBook);
+router.post("/login",userController.userLogin)
+router.get("/bookslist",bookController.getBooks)
+
+
+
+
+module.exports=router
+>>>>>>> 2b59250b03826f8dcbb26244dd5e541c207dda63
